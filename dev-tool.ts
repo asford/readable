@@ -168,6 +168,24 @@ const devScripts: DevScripts = {
       throw new Error(`readable exited with status ${code}`);
     }
   },
+  /**
+   * Compile static binary
+   */
+  "compile": async () => {
+    const target = ["./readable.ts"];
+    const cmd = [
+      "deno",
+      "compile",
+      "--unstable",
+      "--allow-read",
+      "--allow-write",
+    ];
+    const p = Deno.run({ cmd: [...cmd, ...target] });
+    const { code } = await p.status();
+    if (code) {
+      throw new Error(`compile failed with status ${code}`);
+    }
+  },
   "upgrade": async (args) => {
     if (args.length !== 3) {
       throw new Error(`requires arguments [target] [previous] [next]`);

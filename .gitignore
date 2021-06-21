@@ -1,5 +1,8 @@
 # test coverage
 cov_profile*
 
+# compiled binary
+readable
+
 # ignore for now until POC
 campaigns

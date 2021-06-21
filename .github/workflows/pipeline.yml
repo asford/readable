@@ -12,6 +12,19 @@ jobs:
           deno-version: v1.10.2
       - run: ./dev env
       - run: ./dev build docker
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.10.2
+      - run: ./dev env
+      - run: ./dev compile
+      - uses: actions/upload-artifact@v2
+        with:
+          name: readable
+          path: readable
   fmt:
     runs-on: ubuntu-latest
     steps:
